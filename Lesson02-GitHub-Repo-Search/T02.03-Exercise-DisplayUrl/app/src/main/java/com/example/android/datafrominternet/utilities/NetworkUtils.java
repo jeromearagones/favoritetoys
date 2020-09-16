@@ -45,8 +45,18 @@ public class NetworkUtils {
      * @return The URL to use to query the GitHub server.
      */
     public static URL buildUrl(String githubSearchQuery) {
-        // TODO (1) Fill in this method to build the proper GitHub query URL
-        return null;
+        // OK (1) Fill in this method to build the proper GitHub query URL
+        Uri builtUri = Uri.parse(GITHUB_BASE_URL).buildUpon()
+                .appendQueryParameter(PARAM_QUERY, githubSearchQuery)
+                .appendQueryParameter(PARAM_SORT, sortBy)
+                .build();
+        URL url = null;
+        try {
+            url=new URL(builtUri.toString());
+        } catch (MalformedURLException e) {
+            e.printStackTrace
+        }
+        return url;
     }
 
     /**
